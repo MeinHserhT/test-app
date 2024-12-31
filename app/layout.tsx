@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import React from "react";
 import "./globals.css";
 import Navbar from "./components/navbar/navbar";
-// import Button from "./components/button";
+import Tabs from "./components/tabs";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -25,12 +25,11 @@ const RootLayout = ({
           <Navbar />
 
           {/* content */}
-          <main className="flex-1 h-dvh">
+          <main className="flex-1 h-dvh bg-center bg-cover bg-no-repeat bg-[url('/background.jpg')] bg-slate-500 bg-blend-lighten">
             <div className="px-8 flex justify-center">
-              {/* {years.map((y: string) => {
-                return <Button key={y} title={y} link={"/" + y} />;
-              })} */}
+              <Tabs contents={years} />
             </div>
+
             {children}
           </main>
         </div>

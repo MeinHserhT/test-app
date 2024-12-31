@@ -2,23 +2,31 @@ import React from "react";
 import Link from "next/link";
 
 const Button = ({ title, link }: { title: string; link: string }) => {
-  // const changeClass = () => {};
+  const [isClicked, setIsClicked] = React.useState(false);
 
   return (
     <div className="px-2">
       <button
-        className="relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-teal-300 to-lime-300 group-hover:from-teal-300 group-hover:to-lime-300 dark:text-white dark:hover:text-gray-900 focus:ring-4 focus:outline-none focus:ring-lime-200 dark:focus:ring-lime-800"
+        className="outline-none text-white inline-flex justify-center p-0.5 mx-1 rounded-lg bg-gradient-to-br from-teal-300 to-lime-300 hover:text-gray-900"
         value={title}
+        onClick={() => {
+          setIsClicked(!isClicked);
+        }}
       >
         <Link
           href={link}
-          className="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0"
+          className={isClicked ? btnStyle["on"] : btnStyle["off"]}
         >
           <span>{title}</span>
         </Link>
       </button>
     </div>
   );
+};
+
+const btnStyle: { [key: string]: string } = {
+  off: "px-5 py-2.5 transition-all ease-in duration-100 bg-dark-blue rounded-lg hover:bg-opacity-0",
+  on: "px-5 py-2.5 text-gray-900",
 };
 
 export default Button;
